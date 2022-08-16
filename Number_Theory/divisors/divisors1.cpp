@@ -7,8 +7,10 @@ vector<ll> sum(N,0);
 int main(){
    
     for(ll i=2;i<N;i++){
+        //As 1 is divisors of all numbers
         divisors[i].push_back(1);
         sum[i]+=1;
+        //for 2,4,6,8,... push 2 as one of their divisor
         for(ll j=i;j<N;j+=i){
             
             divisors[j].push_back(i);

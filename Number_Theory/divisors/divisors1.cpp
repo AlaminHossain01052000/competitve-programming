@@ -5,7 +5,7 @@ const long long int N=1e6+10;
 vector<ll> divisors[N];
 vector<ll> sum(N,0);
 int main(){
-   
+   //Complexity O(n logn)
     for(ll i=2;i<N;i++){
         //As 1 is divisors of all numbers
         divisors[i].push_back(1);

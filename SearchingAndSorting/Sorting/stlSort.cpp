@@ -45,6 +45,7 @@ int main()
     }
     cout<<endl;
     // *******************************************************************************
+    //Sort string as like dictionary
     vector<string> strings={"alamin","john","boltu","noltu","jahn","naltu"};
     cout<<"Before Sorting of Strings : ";
     for(auto str:strings){

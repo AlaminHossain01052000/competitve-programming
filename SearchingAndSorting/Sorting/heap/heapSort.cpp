@@ -1,6 +1,10 @@
 #include<bits/stdc++.h>
 using namespace std;
 vector<int> ans;
+
+//heapify take an array and an index as arguments and convert the array as a max heap
+//The heap data structure is a binary tree where each node of each subtree is lesser(max heap) of greater(min heap) than the root node
+
 void heapify(vector<int> &v,int i){
     int n=v.size();
     int largest=i;
@@ -19,7 +23,7 @@ void heapify(vector<int> &v,int i){
     }
 
 }
-
+//the heapSort algorithm swap the last or smallest element of a max heap with the root or gratest node and heapify the data structure after the again
 void heapSort(vector<int> &v){
    int size=v.size();
    while(size>0){
@@ -52,11 +56,14 @@ int main(){
             for(int i=n/2-1;i>=0;--i){
                 heapify(v,i);
             }
+            cout<<"The Array before Sorting is: ";
             for(int i=0;i<n;++i){
                 cout<<v[i]<<" ";
             }
             cout<<endl;
             heapSort(v);
+            cout<<"The Array After Sorting is: ";
+            reverse(ans.begin(),ans.end());
             for(int i=0;i<ans.size();++i){
                 cout<<ans[i]<<" ";
             }

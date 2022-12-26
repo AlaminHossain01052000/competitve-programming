@@ -9,7 +9,7 @@ void printArray(vector<int> &v)
     }
     printf("\n");
 }
-
+//It will consider an index as pivot and the arrange the array as like as that the small and equal number from the pivot will arranged in the left side of the pivot and the larger elements from the pivot will be arranged in the right side of the pivot. After such an arranging the function will return the partition index
 int partition(vector<int> &v, int low, int high)
 {
     int pivot = v[low];
@@ -43,7 +43,7 @@ int partition(vector<int> &v, int low, int high)
     v[j] = temp;
     return j;
 }
-
+//the quickSort algorithm uses recursive approach to divide the problem in sub problems and sort the sub problems. It is also knows as divide and conquer approach
 void quickSort(vector<int> &v,int low,int high){
     if(low<high){
         int partitionIndex=partition(v,low,high);

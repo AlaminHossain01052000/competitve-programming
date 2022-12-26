@@ -38,3 +38,28 @@ int main(){
 // 3 5
 // 3 6
 // 4 6
+
+
+// Output:
+// 1 
+// Parent 1 Child : 3
+// 3 
+// Parent 3 Child : 1
+// Parent 3 Child : 2
+// 2
+// Parent 2 Child : 3
+// Parent 2 Child : 6
+// 6
+// Parent 6 Child : 2
+// Parent 6 Child : 3
+// Parent 6 Child : 4
+// 4
+// Parent 4 Child : 3
+// Parent 4 Child : 6
+// Parent 3 Child : 4
+// Parent 3 Child : 5
+// 5
+// Parent 5 Child : 1
+// Parent 5 Child : 3
+// Parent 3 Child : 6
+// Parent 1 Child : 5

@@ -11,23 +11,23 @@ void printArray(vector<int> &A, int n)
     printf("\n");
 }
 
-
+//Mere sort follow divide and conquer approach to sort an array. 
 void mergeSort( int low, int high){
-    if(low==high)return;
-    
+    if(low==high)return; //base case
+    //dividing array to two portion. 1. low to mid 2. mid+1  to high
         int mid = (low + high) /2;
         mergeSort( low, mid);
         mergeSort( mid+1, high);
         int i=low,j=mid+1;
-        // vector<int> B(high-low+1);
+        //merge the portions of the divided array together
         for(int k=low;k<=high;++k){
-            if(i==mid+1)B[k]=A[j++];
-            else if(j==high+1)B[k]=A[i++];
-            else if(A[i]<A[j])B[k]=A[i++];
-            else B[k]=A[j++];
+            if(i==mid+1)B[k]=A[j++]; //If there are no elements in left portion
+            else if(j==high+1)B[k]=A[i++];//If there are no elements in right portion
+            else if(A[i]<A[j])B[k]=A[i++];//if left[i] is smaller than right[i]
+            else B[k]=A[j++];//if right[i] is smaller or equal than left[i]
         }   
 
-        
+        //copy the element of B into A
         for(int k=low;k<=high;++k){
             
             A[k]=B[k];
@@ -37,54 +37,17 @@ void mergeSort( int low, int high){
 
 int main()
 {
-    // int A[] = {9, 14, 4, 8, 7, 5, 6};
-    A= {9, 1, 4, 14, 4, 15, 6};
-    int n = 7;
-    cout<<"Array Before Sort :-- ";
+    int n;
+    cout<<"Enter Number of elements : ";
+    cin>>n;
+    cout<<"Enter "<<n<<" Space Separated Integers as Elements of the Array :"<<endl;
+    for(int i=0;i<n;++i){
+        cin>>A[i];
+    }
+    cout<<"Array Before Sort : ";
     printArray(A, n);
-    mergeSort( 0, 6);
-    cout<<"Array After Sort :-- ";
+    mergeSort( 0, n-1);
+    cout<<"Array After Sort : ";
     printArray(A, n);
     return 0;
 }
-
-// void merge(int A[], int mid, int low, int high)
-// {
-//     int i, j, k, B[100];
-//     i = low;
-//     j = mid + 1;
-//     k = low;
-
-//     while (i <= mid && j <= high)
-//     {
-//         if (A[i] < A[j])
-//         {
-//             B[k] = A[i];
-//             i++;
-//             k++;
-//         }
-//         else
-//         {
-//             B[k] = A[j];
-//             j++;
-//             k++;
-//         }
-//     }
-//     while (i <= mid)
-//     {
-//         B[k] = A[i];
-//         k++;
-//         i++;
-//     }
-//     while (j <= high)
-//     {
-//         B[k] = A[j];
-//         k++;
-//         j++;
-//     }
-//     for (int i = low; i <= high; i++)
-//     {
-//         A[i] = B[i];
-//     }
-    
-// }

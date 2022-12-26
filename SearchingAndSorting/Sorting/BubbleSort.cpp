@@ -13,13 +13,15 @@ void printArray(vector<int> &v)
 }
 
 // Time complexity is O(n),O(n^2),O(n^2)
+//bubbleSort function will take an array as reference as an argument and sort that array
 void bubbleSort(vector<int> &v)
 {
     int n = v.size();
     for (int i = 0; i < n - 1; ++i)
     {
+        //isSwapped is used to detect whether any swapping is happened or not. If no swapping is happend then the array is sorted and we do not need any further iteration
         int isSwapped = 0;
-
+        //in every iteration the n-1-i th index to n-1 th index will be sorted. So we do not need to iterate that portion again
         for (int j = 0; j < n - 1 - i; ++j)
         {
             if (v[j] > v[j + 1])

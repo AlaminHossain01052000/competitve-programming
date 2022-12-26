@@ -31,9 +31,15 @@ int main()
 {
     memset(dp,-1,sizeof(dp));
     int n,w;
-    cin>>n>>w;
+    cout<<"Enter Number of products : ";
+    cin>>n;
+    cout<<"\nEnter Max Capacity of the Knapsack : ";
+    cin>>w;
+    cout<<endl;
+    cout<<"Enter the weigths and values in space separated integers \n";
     for(int i=0;i<n;++i){
         cin>>weights[i]>>values[i];
     }
+    cout<<"Max Profit Is : ";
     cout<<knapsack(n-1,w);
 }

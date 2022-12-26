@@ -23,7 +23,7 @@ int binarySearch(vector<int> v,int size,int searchingValue){
     sort(v.begin(),v.end());
 
     int low=0;
-    int high=size;
+    int high=size-1;
 
     while(low<=high){
         int mid=(low+high)/2;

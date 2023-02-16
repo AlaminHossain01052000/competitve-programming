@@ -29,7 +29,7 @@ int main(){
     dfs(1);
 }
 //Sample Input:
-// 6 8 
+// 6 8
 // 1 3
 // 1 5
 // 2 3
@@ -41,9 +41,9 @@ int main(){
 
 
 // Output:
-// 1 
+// 1
 // Parent 1 Child : 3
-// 3 
+// 3
 // Parent 3 Child : 1
 // Parent 3 Child : 2
 // 2

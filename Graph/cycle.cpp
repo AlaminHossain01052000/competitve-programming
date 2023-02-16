@@ -3,6 +3,26 @@ using namespace std;
 const int N=1e5+10;
 vector<int> graph[N];
 bool visited[N];
+vector<int> color(N,0);
+int cycleStart,cycleEnd;
+//detection cycle in directed graph
+bool hasCycle(int vertex){
+    color[vertex]=1;
+    for(auto child:graph[vertex]){
+        if(color[child]==0){
+            if(hasCycle(child)){
+                return true;
+            }
+        }
+        else if(color[child]==1){
+            cycleStart=child;
+            cycleEnd=vertex;
+            return true;
+        }
+    }
+    color[vertex]=2;
+    return false;
+}
 bool dfs(int vertex,int parent){
     visited[vertex]=true;
     bool hasCycle=false;

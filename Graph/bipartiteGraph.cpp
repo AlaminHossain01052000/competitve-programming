@@ -19,7 +19,7 @@ void dfs(int vertex,int parent,int color){
         else{
             if(adjacency!=parent&&visited[adjacency]==color){
                 //if color of adjacency nodes are same and they are not in parent-child relationship for undirected graph
-                ans=false;
+                ans=false;//not bipariate
                 break;
             }
         }

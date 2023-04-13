@@ -18,6 +18,9 @@ void seive(){
             for(int j=2*i;j<N;j+=i){
                 isPrime[j]=0;
                 hp[j]=i;
+                if(!lp[j]){
+                    lp[j]=i;
+                }
             }
         }
     }

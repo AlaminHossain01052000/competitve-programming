@@ -1,25 +1,11 @@
+// https://cses.fi/problemset/task/1646
 #include<bits/stdc++.h>
 using namespace std;
+#define int long long int
 const int N=1e7+100;
 const int K=log2(N)+1;
 const int INF=1e9+100;
 //complexiy O(Nlogn)
-vector<vector<int>> sparseTableForMinimumQuery(vector<int>&v){
-    int n=v.size();
-    vector<vector<int>>st(K,vector<int>(n,INF));
-    // vector<vector<int>>st(K,vector<int>(n,INF*-1));//if calculating max query
-    for(int j=0;j<n;++j)st[0][j]=v[j];
-
-
-    for(int i=1;i<=K;++i){
-        for(int j=0;j+(1<<i)<=n;++j){//j+(1<<i) must be less than or equal to n to ensure runtime error handling
-            st[i][j]=min(st[i-1][j],st[i-1][j+(1<<(i-1))]);
-        }
-    }
-
-
-   return st;
-}
 //for calculating sum of the given query. Note that prefix sum is a better approach
 vector<vector<int>> sparseTableForSumQuery(vector<int>&v){
     int n=v.size();
@@ -38,17 +24,15 @@ vector<vector<int>> sparseTableForSumQuery(vector<int>&v){
    return st;
 }
 // total Complexity O(n*q)
-int main(){
+signed main(){
     
-    int n;
-    cin>>n;
+    int n,q;
+    cin>>n>>q;
     vector<int>v(n);
     for(int i=0;i<n;++i)cin>>v[i];
-    vector<vector<int>> st=sparseTableForMinimumQuery(v);
+    // vector<vector<int>> st=sparseTableForMinimumQuery(v);
     vector<vector<int>> stSum=sparseTableForSumQuery(v);
    
-    int q;
-    cin>>q;
     //calculate minimum and sum of the range l to r
     while(q--){
         int l,r;
@@ -57,7 +41,7 @@ int main(){
         int i=log2(r-l+1);
         r--;//if query is basen on 0-based index
         l--;
-        cout<<min(st[i][l],st[i][r-(1<<i)+1])<<endl;
+        // cout<<min(st[i][l],st[i][r-(1<<i)+1])<<endl;
 
         //calculating sum
         long long sum=0;

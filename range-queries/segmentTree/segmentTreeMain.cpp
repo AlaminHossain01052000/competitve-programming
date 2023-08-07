@@ -1,5 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
+// For Range minimum queries
 class SGTree{
     vector<int>   segmentTree;
     public:
@@ -45,6 +46,52 @@ class SGTree{
             segmentTree[index]=min(segmentTree[2*index+1],segmentTree[2*index+2]);
         }
 };
+// For Range Sum Queries======>
+// class SGTree{
+//     vector<int>   segmentTree;
+//     public:
+//         SGTree(int n){
+//             segmentTree.resize(4*n+1); // For array length n the max number of nodes of a segment tree can be at most 4*n
+//         }
+//         //O(4*n)
+//         void build(int index,int left,int right,vector<int> &v){
+//             if(left==right){
+//                 segmentTree[index]=v[left];
+//                 return;
+//             }
+//             int mid=(left+right)>>1;
+//             build(2*index+1,left,mid,v); //left child
+//             build(2*index+2,mid+1,right,v); //right child
+//             segmentTree[index]=(segmentTree[2*index+1]+segmentTree[2*index+2]);
+//         }
+//         // O(logn)
+//         int query(int index,int left,int right,int l,int r){
+//             //no overlap [l,r][left,rigth] | [left,right][l,r]
+//             if(r<left||right<l){
+//                 return 0;
+//             }
+//             //complete overlap l left right r
+//             if(l<=left&&right<=r){
+//                 return segmentTree[index];
+//             }
+//             //partial overlap l left r right | left l r right etc...
+//             int mid=(left+right)>>1;
+//             int x=query(2*index+1,left,mid,l,r);
+//             int y=query(2*index+2,mid+1,right,l,r);
+//             return x+y;
+//         }
+//         // O(logn)
+//         void update(int index,int left,int right,int i,int val){
+//             if(left==right){
+//                 segmentTree[index]=val;
+//                 return;
+//             }
+//             int mid=(left+right)>>1;
+//             if(i<=mid) update(2*index+1,left,mid,i,val);
+//             else update(2*index+2,mid+1,right,i,val);
+//             segmentTree[index]=(segmentTree[2*index+1]+segmentTree[2*index+2]);
+//         }
+// };
 // Problem:
 // Given 2 array v1={2,3,1,5,7} and v2={1,5,2}
 // Given q queries. Each of query can have to types. If queryType=1 then l1,r1,l2, and r2 will be given and have to find the minimum of the range [l1,r1] from v1 and minimum of the range [l2,r2] from v2 and minimum of the minimum.Simply can say min(min[l1,r1],min[l2,r2])

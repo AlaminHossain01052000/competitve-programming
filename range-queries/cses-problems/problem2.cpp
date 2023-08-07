@@ -40,15 +40,14 @@ vector<vector<int>> sparseTableForSumQuery(vector<int>&v){
 // total Complexity O(n*q)
 int main(){
     
-    int n;
-    cin>>n;
+    int n,q;
+    cin>>n>>q;
     vector<int>v(n);
     for(int i=0;i<n;++i)cin>>v[i];
     vector<vector<int>> st=sparseTableForMinimumQuery(v);
-    vector<vector<int>> stSum=sparseTableForSumQuery(v);
+    // vector<vector<int>> stSum=sparseTableForSumQuery(v);
    
-    int q;
-    cin>>q;
+   
     //calculate minimum and sum of the range l to r
     while(q--){
         int l,r;
@@ -59,17 +58,7 @@ int main(){
         l--;
         cout<<min(st[i][l],st[i][r-(1<<i)+1])<<endl;
 
-        //calculating sum
-        long long sum=0;
-        for(i=K;i>=0;--i){
-            if((1<<i)<=(r-l+1)){ //here r-l+1 is the range length
-
-                sum+=stSum[i][l];
-                l+=(1<<i);//new range is from l+(2^i) to r
-
-            }
-        }
-        cout<<sum<<endl;
+        
     }
 
 }

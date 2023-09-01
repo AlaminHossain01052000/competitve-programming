@@ -41,7 +41,7 @@ void bellman_ford_algo(vector<int> &distance,vector<int> &parent){
             int node1=edge.u;
             int node2=edge.v;
             int weightOfEdge=edge.weight;
-            if(distance[node1]==INF)continue;//If we do not continue here then in next line if the weightOfEdge is negative then INF+(-weightOfEdge)=INF-weightOfEdge will store the distance of node 2 as INF-2 or INF-3,...INF-x etc. Which will hamper our code
+            if(distance[node1]==INF)continue;//If we do not continue here then in next line if the weightOfEdge is negative then INF+(-weightOfEdge)=INF-weightOfEdge will store the distance of node 2 as INF-2 or INF-3,...INF-x etc. Which will hamper our code.*You must remove this condition if souce code is not defined
             
             if(distance[node1]+weightOfEdge<distance[node2]){
                 distance[node2]=distance[node1]+weightOfEdge;

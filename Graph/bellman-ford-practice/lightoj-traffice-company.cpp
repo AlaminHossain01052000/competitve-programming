@@ -41,7 +41,7 @@ void bellman_ford_algo(vector<int> &distance,vector<int> &parent){
             int node1=edge.u;
             int node2=edge.v;
             int weightOfEdge=edge.weight;
-            if(distance[node1]==INF)continue;//If we do not continue here then in next line if the weightOfEdge is negative then INF+(-weightOfEdge)=INF-weightOfEdge will store the distance of node 2 as INF-2 or INF-3,...INF-x etc. Which will hamper our code.*You must remove this condition if souce node is not defined or the objective is to just detect cycle
+            if(distance[node1]==INF)continue;//If we do not continue here then in next line if the weightOfEdge is negative then INF+(-weightOfEdge)=INF-weightOfEdge will store the distance of node 2 as INF-2 or INF-3,...INF-x etc. Which will hamper our code.*You must remove this condition if souce code is not defined
             
             if(distance[node1]+weightOfEdge<distance[node2]){
                 distance[node2]=distance[node1]+weightOfEdge;
@@ -57,15 +57,15 @@ void bellman_ford_algo(vector<int> &distance,vector<int> &parent){
 }
 //Case of negative weighted cycle
 void bellman_ford_2(vector<int> &distance,vector<int> &parent){
-    distance[sourceNode]=0;
-    int x;
+    // distance[sourceNode]=0;
+    int x=-1;
     for(int i=0;i<n;++i){
         x=-1;
         for(auto edge:graph){
             int node1=edge.u;
             int node2=edge.v;
             int wght=edge.weight;
-            if(distance[node1]==INF)continue;
+            // if(distance[node1]==INF)continue;
             if(distance[node1]+wght<distance[node2]){
                 distance[node2]=max(INF*-1,distance[node1]+wght);//To avoid integer overflow for negative weighted cycle we have used INF*-1
                 parent[node2]=node1;
@@ -74,9 +74,11 @@ void bellman_ford_2(vector<int> &distance,vector<int> &parent){
         }
     }
         if(x==-1){
-            cout<<"No negative cycle is exist\n";
+            cout<<"NO\n";
         }
         else{
+            cout<<"YES\n";
+            return;
             int y=x;
             for(int i=0;i<n;++i){
                 y=parent[y];
@@ -100,24 +102,34 @@ void bellman_ford_2(vector<int> &distance,vector<int> &parent){
     
 }
 int main(){
-    cout<<"Enter Number of Nodes and Number of Edges of the graph : ";
-    cin>>n>>m;
-    cout<<"Enter "<<m<<" edges in next " <<m <<" lines just like this : node1 node2 weight\n";
-    for(int i=0;i<m;++i){
-        int u,v,weight;
-        cin>>u>>v>>weight;
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+    int t;
+    cin>>t;
+    for(int tc=1;tc<=t;++tc){
+        graph.clear();
+        int p;
+        cin>>n>>m>>p;
+        for(int i=0;i<m;++i){
+        int u,v,in,e;
+        cin>>u>>v>>in>>e;
         Edge newEdge;
         newEdge.u=u;
         newEdge.v=v;
-        newEdge.weight=weight;
+        newEdge.weight=(p*e)-in;
         graph.push_back(newEdge);
+        }
+        // sourceNode=0;
+        vector<int> distance(n,INF);
+        vector<int> parent(n,-1);
+        cout<<"Case "<<tc<<": ";
+        bellman_ford_2(distance,parent);
     }
-    cout<<"Enter the source node : ";
-    cin>>sourceNode;
 
 
-    vector<int> distance(n,INF);
-    vector<int> parent(n,-1);
+
+    
 
     //Bellman ford 1
     // bellman_ford_algo(distance,parent);
@@ -133,7 +145,7 @@ int main(){
     //     findPath(randNode,parent,distance);
     // }
     //Bellman ford 2
-    bellman_ford_2(distance,parent);
+  
 }
 // Input:
 // 6 9

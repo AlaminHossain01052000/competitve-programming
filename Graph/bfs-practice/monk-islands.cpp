@@ -1,6 +1,8 @@
+// https://www.hackerearth.com/practice/algorithms/graphs/breadth-first-search/practice-problems/algorithm/monk-and-the-islands/
 #include<bits/stdc++.h>
 using namespace std;
 const int N=1e5+10;
+const int INF=1e9+10;
 vector<int> graph[N];
 bool visited[N];
 int level[N];
@@ -12,37 +14,47 @@ void bfs(int root){
     while(!q.empty()){
         int frontNode=q.front();
         q.pop();
-        cout<<frontNode<<" ";
+        // cout<<frontNode<<" ";
         //Traverse through all the childnode of the frontNode and inserted them in the queue as well as marked the child nodes as visited
         for(auto child:graph[frontNode]){
-            if(visited[child]==false){
+            if(level[child]>level[frontNode]+1){
                 q.push(child);
                 visited[child]=true;
                 level[child]=level[frontNode]+1;
             }
+                
+            
             
         }
     }
     cout<<endl;
 }
 int main(){
-    int n,m;
+    int t;
+    cin>>t;
+    while(t--){
+        int n,m;
     cin>>n>>m;
+    for(int i=1;i<=n;++i){
+        graph[i].clear();
+        visited[i]=false;
+    }
     for(int i=1;i<=m;++i){
         int n1,n2;
         cin>>n1>>n2;
         graph[n1].push_back(n2);
         graph[n2].push_back(n1);
     }
+    for(int i=1;i<=n;++i)level[i]=INF;
     level[1]=0;
     bfs(1); //Considering the node 1 as root node
-    for(int i=1;i<=n;++i){
-        cout<<"Level of node "<<i<<" => "<<level[i]<<endl;
+    cout<<level[n]<<endl;
     }
+    
 }
 
 // Sample Input
-// 13 12
+// 13
 // 1 2
 // 1 3
 // 1 13

@@ -1,3 +1,5 @@
+// https://www.codechef.com/problems/REVERSE
+// https://www.youtube.com/watch?v=SQOQ99stCas
 #include<bits/stdc++.h>
 using namespace std;
 const int N=1e5+10;
@@ -39,7 +41,7 @@ int main(){
     cout<<bfs(n)<<endl;
     return 0;
 }
-//Sample input
+// Sample input
 // 7 7
 // 1 2 
 // 3 2

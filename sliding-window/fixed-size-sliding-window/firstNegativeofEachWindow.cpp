@@ -35,7 +35,7 @@ vector<long long> printFirstNegativeInteger(long long int A[],long long int N, l
         return ret;                                        
 }
 int main(){
-    long long int A[5] = {-1,-2,3,4,5};
+    long long int A[5] = {-1,-2,-3,4,5};
     long long int K=3;//window size
     long long int N=5;
     auto ret=printFirstNegativeInteger(A,N,K);

@@ -12,6 +12,7 @@ int find(int v){
     //root node is a parent of himself
     if(v==parent[v])return v;
     //path compression 
+    //path compression
     return parent[v]=find(parent[v]);
 }
 void Union(int a,int b){

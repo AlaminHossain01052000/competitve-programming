@@ -42,9 +42,40 @@ void addition(string a,string b){
     cout<<ans<<endl;
 
 }
+void multiplication(string a, string b) {
+    int n = a.size();
+    int m = b.size();
+    vector<int> result(n + m, 0); // Result array to store intermediate results
+    
+    // Reverse the strings to multiply from least significant digits
+    reverse(a.begin(), a.end());
+    reverse(b.begin(), b.end());
 
+    // Perform multiplication digit by digit
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < m; ++j) {
+            int prod = (a[i] - '0') * (b[j] - '0');
+            result[i + j] += prod;
+            result[i + j + 1] += result[i + j] / 10; // Handle carry
+            result[i + j] %= 10;
+        }
+    }
+
+    // Remove leading zeros from the result
+    while (result.size() > 1 && result.back() == 0)
+        result.pop_back();
+
+    // Convert result array to a string
+    string ans;
+    for (int i = result.size() - 1; i >= 0; --i) {
+        ans += (result[i] + '0');
+    }
+
+    cout << ans << endl;
+}
 int main(){
 string a,b;
 cin>>a>>b;
 addition(a,b);
+multiplication(a,b);
 }

@@ -1,5 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
+#define int long long int
 const int N=1e5+100;
 const int INF=INT_MAX;
 vector<pair<int,int>> graph[N];
@@ -28,7 +29,7 @@ void dijkstra(int source,int n){
     }
 
 }
-int main(){
+signed main(){
     int n,m;
     cin>>n>>m;
     for(int i=1;i<=m;++i){

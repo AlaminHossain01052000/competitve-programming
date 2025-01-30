@@ -2,10 +2,10 @@
 using namespace std;
 const int N=1e5+10;
 int parent[N];
-int size[N];
+int sizeA[N];
 void make(int v){
     parent[v]=v;//parent of independent node is itself
-    size[v]=1;//size of a single node is 1
+    sizeA[v]=1;//sizeA of a single node is 1
 }
 //find root parent of a node
 int find(int v){
@@ -27,9 +27,9 @@ void Union(int a,int b){
     //     size[a]+=size[b];
     // }
     if(a!=b){
-        if(size[a]<size[b])swap(a,b);
+        if(sizeA[a]<sizeA[b])swap(a,b);
         parent[b]=a;
-        size[a]+=size[b];
+        sizeA[a]+=sizeA[b];
     }
 }
 int main(){

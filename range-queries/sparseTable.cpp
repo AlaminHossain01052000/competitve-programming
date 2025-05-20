@@ -23,7 +23,7 @@ vector<vector<int>> sparseTableForMinimumQuery(vector<int>&v){
 //for calculating sum of the given query. Note that prefix sum is a better approach
 vector<vector<int>> sparseTableForSumQuery(vector<int>&v){
     int n=v.size();
-    vector<vector<int>>st(K,vector<int>(n,INF));
+    vector<vector<int>>st(K,vector<int>(n));
     // vector<vector<int>>st(K,vector<int>(n,INF*-1));//if calculating max query
     copy(v.begin(),v.end(),st[0].begin());//st[0]=v;
 

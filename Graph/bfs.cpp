@@ -26,14 +26,15 @@ void bfs(int root){
     cout<<endl;
 }
 int main(){
-    int n;
-    cin>>n;
-    for(int i=1;i<=n-1;++i){
+    int n,m;
+    cin>>n>>m;
+    for(int i=1;i<=m;++i){
         int n1,n2;
         cin>>n1>>n2;
         graph[n1].push_back(n2);
         graph[n2].push_back(n1);
     }
+    level[1]=0;
     bfs(1); //Considering the node 1 as root node
     for(int i=1;i<=n;++i){
         cout<<"Level of node "<<i<<" => "<<level[i]<<endl;
@@ -41,7 +42,7 @@ int main(){
 }
 
 // Sample Input
-// 13
+// 13 12
 // 1 2
 // 1 3
 // 1 13
